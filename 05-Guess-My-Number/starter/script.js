@@ -1,18 +1,44 @@
 'use strict';
-const secretNumber = Math.trunc(Math.random()*21)
-const message = document.querySelector('.message')
-const score = document.querySelector('.score')
-const number = document.querySelector('.number').textContent
 
-const submit = (() => {
-    if (secretNumber === "")
-        {message.textContent = "no number given!"}
-    else if (secretNumber > number)
-        {message.textContent = "too high"}
-    else if (secretNumber < number)
-        {message.textContent = "too low"}
-    else if (secretNumber === number)
-        (message.textContent = "you won this round")
-})
-const check = document.querySelector(".check")
-check.addEventListener('click', submit)
+const check = document.querySelector(".check");
+const again = document.querySelector('.again');
+
+again.addEventListener('click', function() { 
+    let score = 20;
+    const secretNumber = Math.trunc(Math.random()*21);
+
+
+check.addEventListener('click', function() {
+let guess = Number(document.querySelector('.guess').value);
+let message = document.querySelector('.message');
+    if (!guess) { 
+        message.textContent = "no number given!";
+    }
+
+    else if (secretNumber === guess) { 
+        document.querySelector('body').style.backgroundColor = '#60b347';
+        message.textContent = "you won this round";
+        document.querySelector('.number').textContent = secretNumber;   
+    }
+    else if (secretNumber < guess) {
+        if (score > 1) {
+            message.textContent = "too high";
+            score--;
+            document.querySelector('.score').textContent = score;
+        }
+        else {
+            message.textContent = "You have lost the game :(";    
+    }
+    }
+    else if (secretNumber > guess) {
+        if (score > 1) {
+            message.textContent = "too low";
+            score--;
+            document.querySelector('.score').textContent = score;
+        }
+        else {
+            message.textContent = "You have lost the game :(";    
+        }
+    }
+});
+});
