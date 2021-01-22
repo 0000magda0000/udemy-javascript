@@ -1,9 +1,6 @@
 // We're building a football betting app (soccer for my American friends 😅)!
 // Suppose we get data from a web service about a certain game ('game' variable on next page). In this challenge we're gonna work with that data.
 // Your tasks:
-// 4. During the game, Bayern Munich (team1) used 3 substitute players. Socreatea new array ('players1Final') containing all the original team1 players plus 'Thiago', 'Coutinho' and 'Perisic'
-// 5. Basedonthegame.oddsobject,createonevariableforeachodd(called 'team1', 'draw' and 'team2')
-// 6. Writeafunction('printGoals')thatreceivesanarbitrarynumberofplayer names (not an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)
 // 7. Theteamwiththeloweroddismorelikelytowin.Printtotheconsolewhich team is more likely to win, without using an if/else statement or the ternary operator.
 // Test data for 6.: First, use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
 // GOOD LUCK 😀
@@ -45,8 +42,8 @@ const game = {
     }, };
 
 // 1. Create one player array for each team(variables'players1'and 'players2')
-    const [player1] = game.players;
-    const [ ,player2] = game.players;
+    let [player1] = game.players;
+    let [ ,player2] = game.players;
     console.log(player1)
     console.log(player2)
 
@@ -59,4 +56,24 @@ const game = {
 // 3. Create an array 'allPlayers' containing all players of both teams (22 players)
 const allPlayers = [...player1, ...player2]
 console.log(allPlayers)
+
+// 4. During the game, Bayern Munich (team1) used 3 substitute players. So create a new array ('players1Final') containing all the original team1 players plus 'Thiago', 'Coutinho' and 'Perisic'
+player1 += ['Thiago', 'Coutinho', 'Perisic']
+console.log(player1)
+
+// 5. Based on the game.odds object, create one variable for each odd (called 'team1', 'draw' and 'team2')
+const team1 = game.odds.team1;
+const draw = game.odds.x;
+const team2 = game.odds.team2;
+console.log(team1);
+console.log(draw); 
+console.log(team2);
+
+// 6. Write a function ('printGoals') that receives an arbitrary number of player names (not an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)
+const printGoals = function () {
+    return Math.floor(Math.random() * player1.length)
+};
+
+let random = printGoals()
+console.log(random)
 
